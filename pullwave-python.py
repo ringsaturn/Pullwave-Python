@@ -1,7 +1,7 @@
 # coding=utf-8
+
 import requests
 import time
-import matplotlib.pyplot as plt
 import json
 
 def pullwave(word):
@@ -16,17 +16,27 @@ def pplot(word):
 	data_dic = json.loads(data_raw)
 	d = data_dic
 	qushi = data_dic['qushi']
-	xlabel = len(qushi)*['']
-	x = range(len(qushi))
+	
+	x= len(qushi)*['']
 	y = len(qushi)*['']
+	
 	for i, v in enumerate(qushi):
-		xlabel[i] = v['date']
+		x[i] = v['date']
 		y[i] = v['v']
+		
+	from datetime import datetime
+	x = [datetime.strptime(i, '%Y-%m-%d') for i in x]
 	y = [float(i) for i in y]
-	plt.bar(range((len(y))), y)
-	#plt.plot(x, y)
+	
+	import matplotlib.pyplot as plt
+	plt.rcParams['font.sans-serif'] = ['SimHei']
+	
+	plt.bar(x, y)
+	plt.xlabel(u'年-月-日')
+	plt.ylabel(u'趋势')
+	plt.title(u' %s 在社交网络上的讨论量趋势图' %word)
 	plt.show()
-	return xlabel, y
+	return x, y
 	
 word = input('要查询的词汇： ')
-pplot(word)
+x, y = pplot(word)
