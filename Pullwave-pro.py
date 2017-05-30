@@ -5,12 +5,13 @@ import json
 
 class Pullwave(object):
 
-	def __init__(self, word):
-		self.word = word
+	def __init__(self, word1, word2):
+		self.word1 = word1
+		self.word2 = word2
 
 	def get_data(self):
 		date = time.strftime("%Y-%m-%d", time.localtime())
-		url = 'http://www.pullwave.com/get.php?json=1&auth_usr=free_vip&w1='+str(self.word)+'&w2=&end_date='+str(date)
+		url = 'http://www.pullwave.com/get.php?json=1&auth_usr=free_vip&w1='+str(self.word1)+'&w2='+str(self.word2)+'&end_date='+str(date)
 		resp = requests.get(url)
 		data_json = resp.text
 		return data_json
@@ -19,9 +20,10 @@ class Pullwave(object):
 		data_raw = self.get_data()
 		data_dic = json.loads(data_raw)
 		d = data_dic
+
 		qushi = data_dic['qushi']
 
-		x= len(qushi)*['']
+		x = len(qushi)*['']
 		y = len(qushi)*['']
 
 		for i, v in enumerate(qushi):
@@ -43,11 +45,12 @@ class Pullwave(object):
 		plt.bar(x, y)
 		plt.xlabel(u'年-月-日')
 		plt.ylabel(u'讨论量')
-		plt.title(u' %s 在社交网络上的讨论量趋势图' %self.word)
+		# "%s %s" % ('hello', 'world')
+		plt.title(u' %s %s 在社交网络上的讨论量趋势图' %(self.word1, self.word2))
 		plt.show()
 		#plt.savefig('/Users/[username]/Desktop/%s.png' %word,dpi = 720)
 		return x, y
-
+		
 def find_in_weibo(word, start_date, end_date):
 	s = requests.session()
 	#date = time.strftime("%Y-%m-%d", time.localtime())
@@ -107,18 +110,23 @@ def find_in_weibo(word, start_date, end_date):
 		return final_keywords
 
 	u = filter_chinese(u)
-	#from pyquery import PyQuery
-	#u = PyQuery(u)
 	u = get_key_words(u)
 	return u
 
 if __name__ == '__main__':
-	word = input('要查询的词汇： ')
-	a = Pullwave(word).pplot()
+	import sys
+	if len(sys.argv) <= 3:
+		word1 = sys.argv[1]
+		word2 = sys.argv[2]
+		Pullwave(word1, word2).pplot()
+	 	logic = input('是否微博搜索当天关键词 y/n  ')
+		if logic == 'y':
+			start_date = input('起始日期： ')
+			end_date = input('截止日期： ')
+			return_words = find_in_weibo(word, start_date, end_date)
+			print(return_words)
+	else:
+		print('输入参数过多，最多输入两个词，用空格隔开')
 
-	logic = input('是否微博搜索当天关键词 y/n  ')
-	if logic == 'y':
-		start_date = input('起始日期： ')
-		end_date = input('截止日期： ')
-		return_words = find_in_weibo(word, start_date, end_date)
-		print(return_words)
+
+	

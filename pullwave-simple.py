@@ -34,14 +34,16 @@ def pplot(word):
 	import matplotlib.pyplot as plt
 
 	plt.rcParams['font.sans-serif'] = ['SimHei']
+	plt.rcParams['axes.unicode_minus']=False
+	#plt.rcParams['font.sans-serif']# = ['Hiragino Sans GB']
 
 	plt.bar(x, y)
 	plt.xlabel(u'年-月-日')
 	plt.ylabel(u'讨论量')
 	plt.title(u' %s 在社交网络上的讨论量趋势图' %word)
 	plt.show()
-	#plt.savefig('/Users/[username]/Desktop/%s.png' %word,dpi = 720)  
+	#plt.savefig('/Users/[username]/Desktop/%s.png' %word,dpi = 720)
 	return x, y
 
-word = input('要查询的词汇： ')
+word = input("要查询的词汇： ")
 x, y = pplot(word)
