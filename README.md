@@ -6,8 +6,11 @@
 * matplotlib
 
 ## 用法
-Pro：直接运行程序，会提示输入 词语，然后会绘制柱状图。会提示是否使用微博高级搜索功能（代码复用自 [Devonthink-Chinese-Seach](https://github.com/ringsaturn/DEVONthink-Chinese-Search) 项目）
-simple：只是单纯得绘制曲线
+
+* Alfred: 直接下载 [Alfred Workflow](https://raw.githubusercontent.com/ringsaturn/Pullwave-Python/master/Pullwave.alfredworkflow)，并安装。输入关键词 `pw`，再输入词语，最多两个，用空格隔开即可。代码参见 [python2 version]()
+
+* ：直接运行程序，会提示输入 词语，然后会绘制柱状图。会提示是否使用微博高级搜索功能（代码复用自 [Devonthink-Chinese-Seach](https://github.com/ringsaturn/DEVONthink-Chinese-Search) 项目）
+* simple：只是单纯得绘制曲线
 
 目前 2017-05-15 还只能检索一个词，两个词的还需要等一阵子，并且还比较糙，细节上还有很多要改进的。
 
@@ -15,11 +18,11 @@ simple：只是单纯得绘制曲线
 
 ## TODO
 
-- [ ] 支持多词检索
+- [x] 支持多词检索 `2017-05-24 完成`
 - [x] 改进横坐标轴显示方式 `2017-05-15 完成`
 - [x] 改进绘制图像的显示 `2017-05-15 完成`
-- [ ] 增加保存图片的功能
-- [ ] 争取做个比官网更强大的 GUI 程序出来
+- [x] 增加保存图片的功能 `2017-05-24 完成`
+- [ ] 争取做个比官网更强大的 GUI 程序出来 `部分完成，利用了 Alfred 的交互方式`
 - [ ] 增加检测峰值点
 - [x] 利用 Weibo 高级搜索检索尝试检索相关新闻事件。`2017-05-18 完成`
 
