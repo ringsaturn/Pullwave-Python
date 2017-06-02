@@ -46,5 +46,5 @@ def pplot(word):
 	return x, y
 
 #word = input("要查询的词汇： ") 
-word = '微信'
+word = 'google'
 x, y = pplot(word)
