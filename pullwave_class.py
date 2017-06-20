@@ -50,16 +50,3 @@ class Pullwave(object):
 		plt.show()
 		#plt.savefig('/Users/[username]/Desktop/%s.png' %word,dpi = 720)
 		return x, y
-
-import sys
-if len(sys.argv) <= 3:
-	if len(sys.argv) == 3:
-		word1 = sys.argv[1]
-		word2 = sys.argv[2]
-		Pullwave(word1, word2).pplot()
-	else:
-		word1 = sys.argv[1]
-		word2 = ''
-		Pullwave(word1, word2).pplot()
-else:
-	print('输入参数过多，最多输入两个词，用空格隔开')
