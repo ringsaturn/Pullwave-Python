@@ -11,7 +11,7 @@
 ## 用法
 
 * Alfred: 直接下载 [Alfred Workflow](https://raw.githubusercontent.com/ringsaturn/Pullwave-Python/master/Pullwave.alfredworkflow)，并安装。输入关键词 `pw`，再输入词语，最多两个，用空格隔开即可。
-* python2 version: Alfred Workflo 代码
+* python2 version: Alfred Workflow 代码
 * pullwave-pro ：直接运行程序，会提示输入 词语，然后会绘制柱状图。会提示是否使用微博高级搜索功能（代码复用自 [Devonthink-Chinese-Seach](https://github.com/ringsaturn/DEVONthink-Chinese-Search) 项目）
 * pullwave-class: 利用 API 绘图的关键模块，参考
 
