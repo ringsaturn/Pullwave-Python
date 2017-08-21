@@ -1,0 +1,4 @@
+
+*.pyc
+
+__pycache__/pullwave_class.cpython-36.pyc
